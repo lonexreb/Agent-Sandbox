@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 320" width="1280" height="320" role="img" aria-label="Agent Sandbox — secure VMs and SDK for AI agents">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1120"/>
+      <stop offset="0.55" stop-color="#0f1b33"/>
+      <stop offset="1" stop-color="#081018"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#38bdf8"/>
+      <stop offset="1" stop-color="#818cf8"/>
+    </linearGradient>
+    <linearGradient id="cell" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1e293b"/>
+      <stop offset="1" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="320" fill="url(#bg)"/>
+
+  <!-- faint grid -->
+  <g stroke="#334155" stroke-width="1" opacity="0.18">
+    <path d="M0 80H1280M0 160H1280M0 240H1280"/>
+    <path d="M160 0V320M320 0V320M480 0V320M640 0V320M800 0V320M960 0V320M1120 0V320"/>
+  </g>
+
+  <!-- isolated VM cells, right side -->
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" text-anchor="middle">
+    <g>
+      <rect x="880" y="56" width="150" height="88" rx="10" fill="url(#cell)" stroke="#38bdf8" stroke-width="1.5" opacity="0.95"/>
+      <circle cx="898" cy="74" r="4" fill="#38bdf8"/>
+      <text x="955" y="106" fill="#94a3b8">agent-01</text>
+      <text x="955" y="126" fill="#475569">microVM</text>
+    </g>
+    <g>
+      <rect x="1060" y="56" width="150" height="88" rx="10" fill="url(#cell)" stroke="#818cf8" stroke-width="1.5" opacity="0.95"/>
+      <circle cx="1078" cy="74" r="4" fill="#818cf8"/>
+      <text x="1135" y="106" fill="#94a3b8">agent-02</text>
+      <text x="1135" y="126" fill="#475569">microVM</text>
+    </g>
+    <g>
+      <rect x="880" y="168" width="150" height="88" rx="10" fill="url(#cell)" stroke="#22d3ee" stroke-width="1.5" opacity="0.95"/>
+      <circle cx="898" cy="186" r="4" fill="#22d3ee"/>
+      <text x="955" y="218" fill="#94a3b8">agent-03</text>
+      <text x="955" y="238" fill="#475569">microVM</text>
+    </g>
+    <g>
+      <rect x="1060" y="168" width="150" height="88" rx="10" fill="url(#cell)" stroke="#f472b6" stroke-width="1.5" opacity="0.95"/>
+      <circle cx="1078" cy="186" r="4" fill="#f472b6"/>
+      <text x="1135" y="218" fill="#94a3b8">agent-04</text>
+      <text x="1135" y="238" fill="#475569">microVM</text>
+    </g>
+    <!-- containment boundary -->
+    <rect x="860" y="36" width="370" height="248" rx="16" fill="none" stroke="url(#accent)" stroke-width="1.5" stroke-dasharray="6 6" opacity="0.7"/>
+    <text x="1045" y="26" fill="#64748b" font-size="12">isolation boundary</text>
+  </g>
+
+  <!-- title block, left side -->
+  <g font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+    <rect x="72" y="74" width="56" height="6" rx="3" fill="url(#accent)"/>
+    <text x="72" y="150" font-size="64" font-weight="700" fill="#f1f5f9" letter-spacing="-1">Agent Sandbox</text>
+    <text x="72" y="192" font-size="22" fill="#94a3b8">Secure micro-VMs + SDK for running fleets of AI agents</text>
+    <text x="72" y="222" font-size="22" fill="#94a3b8">without trusting them.</text>
+    <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14">
+      <rect x="72" y="248" width="132" height="30" rx="15" fill="none" stroke="#38bdf8" opacity="0.6"/>
+      <text x="138" y="268" fill="#7dd3fc" text-anchor="middle">isolate</text>
+      <rect x="216" y="248" width="132" height="30" rx="15" fill="none" stroke="#818cf8" opacity="0.6"/>
+      <text x="282" y="268" fill="#a5b4fc" text-anchor="middle">govern</text>
+      <rect x="360" y="248" width="132" height="30" rx="15" fill="none" stroke="#22d3ee" opacity="0.6"/>
+      <text x="426" y="268" fill="#67e8f9" text-anchor="middle">observe</text>
+    </g>
+  </g>
+</svg>
