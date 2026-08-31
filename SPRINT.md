@@ -1,23 +1,27 @@
 # Sprint Plan
 
-## Sprint 0 — Research & Bootstrap (2026-08-31) — ✅ in progress
+## Sprint 0 — Research & Bootstrap (2026-08-31) — ✅ done
 
 - [x] Deep landscape research (4 tracks) → RESEARCH.md
 - [x] Repo scaffold: CLAUDE.md, MEMORY.md, SCOPE.md, SPRINT.md, README.md + SVG banner
 - [x] git init, MIT license, publish to GitHub
-- [ ] Review SCOPE.md candidate directions and pick one
+- [x] Review SCOPE.md candidate directions and pick one → **A+D** (policy + audit control plane, local-first)
 
-## Sprint 1 — Direction & Prototype (candidates, pick after SCOPE review)
+## Sprint 1 — Prototype (2026-08-31) — in progress
 
-- [ ] Choose product direction from SCOPE.md gap analysis
-- [ ] Define MVP: minimal sandbox lifecycle (create → exec → observe → destroy) behind an SDK
-- [ ] Spike: isolation backend on macOS/Linux dev machines (see RESEARCH.md isolation table)
-- [ ] Draft SDK API surface (Python or TypeScript first — decide in SCOPE.md open questions)
-- [ ] Architecture doc + threat model sketch
+- [x] Define MVP: policy TOML → Seatbelt profile → sandboxed run → hash-chained audit log
+- [x] `agentbox` Python package (stdlib-only, ≥3.11): policy, audit, seatbelt, CLI
+- [x] Tests incl. real Seatbelt integration (workdir write allowed, $HOME write blocked, ~/.ssh read denied, network denied)
+- [ ] Linux backend (bubblewrap) with the same policy file
+- [ ] Per-domain egress: filtering proxy design (Seatbelt only toggles network on/off)
+- [ ] Python SDK surface (`agentbox.Sandbox` context manager) beyond the CLI
+- [ ] Richer audit events (per-exec, file-event capture options)
 
 ## Backlog (unsorted)
 
-- Policy-as-code guardrails design (egress, secrets, filesystem)
-- Audit/event log format
+- E2B protocol compatibility layer
+- Audit session-replay viewer
+- Secret brokering (host-side proxy injects credentials; raw keys never enter sandbox)
 - Multi-agent fleet management story
-- CI, tests, contribution guide
+- CI (GitHub Actions: unit tests on Linux + macOS), contribution guide
+- Project rename decision

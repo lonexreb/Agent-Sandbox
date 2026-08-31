@@ -35,7 +35,19 @@ See [SCOPE.md](SCOPE.md) for the full gap analysis and candidate directions.
 
 ## Status
 
-🔬 **Research phase (Sprint 0).** Landscape research is done; product direction is being decided. No product code yet.
+🛠 **Sprint 1 — working prototype.** Direction chosen ([SCOPE.md](SCOPE.md)): a runtime-agnostic **policy + audit control plane**, local-first. The `agentbox` CLI already works on macOS:
+
+```bash
+# Run any command under a declarative policy (Seatbelt-backed)
+python3 -m agentbox run --policy examples/policy.toml --workdir . -- bash -c 'echo hi'
+
+# Writes outside the workdir: blocked. Reads of ~/.ssh, ~/.aws: denied. Network: policy-gated.
+
+# Every run lands in a hash-chained, tamper-evident audit log
+python3 -m agentbox verify --log agentbox-audit.jsonl
+```
+
+Python ≥3.11, stdlib only, no dependencies. Linux (bubblewrap) backend and per-domain egress proxy are next — see [SPRINT.md](SPRINT.md).
 
 ## Project documents
 

@@ -2,7 +2,13 @@
 
 Open-source project: a secure micro-VM runtime + SDK so enterprises can run many AI agents and models without trusting them — isolation, policy guardrails, and audit so a rogue agent can't do damage.
 
-**Current phase:** Research → scoping. No product code yet.
+**Current phase:** Sprint 1 — prototype. Direction: policy + audit control plane (`agentbox` CLI), decided in SCOPE.md.
+
+## Code
+
+- `agentbox/` — Python ≥3.11, stdlib-only package: `policy.py` (TOML → frozen Policy), `seatbelt.py` (Policy → SBPL profile), `audit.py` (hash-chained JSONL log), `cli.py` (`run` / `verify` / `print-profile`)
+- `tests/test_agentbox.py` — run with `python3.12 -m unittest discover -s tests` (includes real Seatbelt integration tests, macOS-only)
+- Keep it stdlib-only; new dependencies need a MEMORY.md entry justifying them.
 
 ## Project documents
 

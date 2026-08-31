@@ -1,0 +1,16 @@
+[project]
+name = "agentbox"
+version = "0.1.0"
+description = "Policy-bound sandbox runner for AI agents with tamper-evident audit"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+
+[project.scripts]
+agentbox = "agentbox.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["agentbox"]

@@ -1,0 +1,12 @@
+# agentbox policy: what one agent is allowed to touch.
+name = "example-coding-agent"
+
+# "deny" (default) or "allow". Per-domain egress lands with the proxy backend.
+network = "deny"
+
+# Writes are always allowed in --workdir; add extra writable paths here.
+allow_write = []
+
+# Read-denied even though reads are otherwise broad. Defaults cover
+# ~/.ssh, ~/.aws, ~/.gnupg, ~/.netrc, ~/.config/gcloud, ~/.kube.
+deny_read = ["~/.ssh", "~/.aws", "~/.gnupg", "~/.netrc", "~/.config/gcloud", "~/.kube"]

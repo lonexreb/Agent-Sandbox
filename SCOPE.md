@@ -1,6 +1,6 @@
 # Scope & Product Direction
 
-> Derived from [RESEARCH.md](RESEARCH.md) (2026-08-31). Status: **direction proposed, not yet decided** — see Open Questions.
+> Derived from [RESEARCH.md](RESEARCH.md) (2026-08-31). Status: **direction decided 2026-08-31 — A+D** (policy + audit control plane, local-first UX as the on-ramp).
 
 ## Working thesis
 
@@ -20,13 +20,19 @@ Don't build another isolation runtime — that layer is crowded, capital-intensi
 - Kubernetes operator (later, if ever)
 - Computer-use / GUI desktops
 
+## Decisions (2026-08-31)
+
+- [x] Primary direction: **A+D combined** — policy-as-code + audit control plane, delivered first as a local-first CLI (`agentbox`) for macOS/Linux dev machines
+- [x] First SDK language: **Python ≥3.11, stdlib-only** (tomllib, hashlib, subprocess) — agent ecosystem is Python-first; TypeScript SDK later
+- [x] Policy file format: **TOML** — human-writable, stdlib-parseable, versionable in git
+- [x] E2B protocol compatibility: **later** (post-MVP enterprise bridge)
+- [x] Isolation backend v0: **macOS Seatbelt via `sandbox-exec`** (what Claude Code/Codex/Gemini CLI use locally); bubblewrap backend for Linux next
+
 ## Open questions
 
-- [ ] Pick primary direction: A (policy + audit control plane) vs D (local-first policy-bound sandbox UX) vs A+D combined
-- [ ] First SDK language: Python or TypeScript?
-- [ ] Policy file format: TOML vs YAML vs Cedar-inspired DSL?
-- [ ] E2B protocol compatibility in v1 or later?
-- [ ] Project name (Agent-Sandbox is a working title; the k8s SIG already uses "agent-sandbox")
+- [ ] Project name (Agent-Sandbox is a working title; the k8s SIG already uses "agent-sandbox"; `agentbox` is the CLI name)
+- [ ] Per-domain network egress: proxy architecture (Seatbelt can only toggle network on/off)
+- [ ] Audit granularity beyond run start/end: file-event and network-flow capture mechanism
 
 ---
 
