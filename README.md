@@ -3,6 +3,7 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/lonexreb/Agent-Sandbox/actions/workflows/ci.yml"><img src="https://github.com/lonexreb/Agent-Sandbox/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-38bdf8" alt="MIT License"></a>
   <img src="https://img.shields.io/badge/status-research-818cf8" alt="Status: research">
   <img src="https://img.shields.io/badge/phase-sprint%200-22d3ee" alt="Phase: sprint 0">

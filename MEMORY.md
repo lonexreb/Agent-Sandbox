@@ -2,6 +2,10 @@
 
 Append-only. Newest entries at the top. Format: date — decision — rationale.
 
+## 2026-10-02 (later)
+
+- **bwrap backend validated on real Linux via CI.** First run skipped: bwrap couldn't configure loopback in the new netns. Fix: `--unshare-user` in the argv (also the right sandboxing posture) + lifting Ubuntu 24.04's AppArmor unprivileged-userns restriction on the runner. All 3 Linux integration tests pass; CI matrix (ubuntu + macos) green.
+
 ## 2026-10-02
 
 - **Backend abstraction landed:** `Sandbox` SDK class picks Seatbelt (macOS) or bubblewrap (Linux) per platform; CLI is now a thin wrapper over the SDK. v0.2.0.

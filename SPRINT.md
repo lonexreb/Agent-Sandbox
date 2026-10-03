@@ -15,8 +15,8 @@
 - [x] Linux backend (bubblewrap) with the same policy file (2026-10-02; arg-generation tested, needs validation on a real Linux box)
 - [x] Per-domain egress: filtering proxy **design** → [docs/egress-proxy.md](docs/egress-proxy.md) (2026-10-02)
 - [x] Python SDK surface: `agentbox.Sandbox` class; CLI now runs through it (2026-10-02)
+- [x] Validate bwrap backend on Linux — CI green on ubuntu-latest: write confinement, escape blocked, network blocked (2026-10-02)
 - [ ] Implement the egress proxy (`network = "proxy"` + `allow_net`)
-- [ ] Validate bwrap backend on Linux (CI: GitHub Actions ubuntu runner)
 - [ ] Richer audit events (per-exec, file-event capture options)
 
 ## Backlog (unsorted)
