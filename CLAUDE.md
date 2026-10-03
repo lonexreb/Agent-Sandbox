@@ -6,8 +6,9 @@ Open-source project: a secure micro-VM runtime + SDK so enterprises can run many
 
 ## Code
 
-- `agentbox/` — Python ≥3.11, stdlib-only package: `policy.py` (TOML → frozen Policy), `seatbelt.py` (Policy → SBPL profile), `audit.py` (hash-chained JSONL log), `cli.py` (`run` / `verify` / `print-profile`)
-- `tests/test_agentbox.py` — run with `python3.12 -m unittest discover -s tests` (includes real Seatbelt integration tests, macOS-only)
+- `agentbox/` — Python ≥3.11, stdlib-only package: `policy.py` (TOML → frozen Policy), `seatbelt.py` (Policy → SBPL profile, macOS), `bwrap.py` (Policy → bubblewrap argv, Linux), `sandbox.py` (`Sandbox` SDK class, picks backend per platform), `audit.py` (hash-chained JSONL log), `cli.py` (thin wrapper: `run` / `verify` / `print-profile`)
+- `tests/` — run with `python3.12 -m unittest discover -s tests` (includes real Seatbelt integration tests, macOS-only)
+- `docs/egress-proxy.md` — accepted design for per-domain network egress (`network = "proxy"`)
 - Keep it stdlib-only; new dependencies need a MEMORY.md entry justifying them.
 
 ## Project documents

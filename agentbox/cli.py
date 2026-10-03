@@ -3,18 +3,13 @@
 from __future__ import annotations
 
 import argparse
-import subprocess
 import sys
-import tempfile
-import time
 from pathlib import Path
 
 from agentbox import audit
-from agentbox.audit import AuditLog
 from agentbox.policy import Policy, PolicyError, load_policy
+from agentbox.sandbox import DEFAULT_LOG, BackendError, Sandbox
 from agentbox.seatbelt import render_profile
-
-DEFAULT_LOG = "agentbox-audit.jsonl"
 
 
 def _policy_from_args(args: argparse.Namespace) -> Policy:
@@ -22,38 +17,15 @@ def _policy_from_args(args: argparse.Namespace) -> Policy:
 
 
 def cmd_run(args: argparse.Namespace) -> int:
-    if sys.platform != "darwin":
-        print("agentbox: only the macOS Seatbelt backend exists so far", file=sys.stderr)
-        return 2
-    policy = _policy_from_args(args)
-    workdir = Path(args.workdir).resolve()
-    profile = render_profile(policy, workdir)
-    log = AuditLog(args.log)
-    log.append(
-        "run.start",
-        cmd=args.cmd,
-        workdir=str(workdir),
-        policy=policy.name,
-        policy_hash=policy.content_hash(),
-        network=policy.network,
-    )
-    started = time.monotonic()
-    with tempfile.NamedTemporaryFile("w", suffix=".sb", delete=False) as fh:
-        fh.write(profile)
-        profile_path = fh.name
     try:
-        proc = subprocess.run(
-            ["/usr/bin/sandbox-exec", "-f", profile_path, *args.cmd], cwd=workdir
-        )
-        code = proc.returncode
+        box = Sandbox(_policy_from_args(args), workdir=args.workdir, log_path=args.log)
+        return box.run(args.cmd).returncode
+    except BackendError as exc:
+        print(f"agentbox: {exc}", file=sys.stderr)
+        return 2
     except OSError as exc:
-        log.append("run.error", error=str(exc))
         print(f"agentbox: failed to launch sandbox: {exc}", file=sys.stderr)
         return 1
-    finally:
-        Path(profile_path).unlink(missing_ok=True)
-    log.append("run.end", exit_code=code, duration_s=round(time.monotonic() - started, 3))
-    return code
 
 
 def cmd_verify(args: argparse.Namespace) -> int:

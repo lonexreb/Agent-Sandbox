@@ -12,9 +12,11 @@
 - [x] Define MVP: policy TOML → Seatbelt profile → sandboxed run → hash-chained audit log
 - [x] `agentbox` Python package (stdlib-only, ≥3.11): policy, audit, seatbelt, CLI
 - [x] Tests incl. real Seatbelt integration (workdir write allowed, $HOME write blocked, ~/.ssh read denied, network denied)
-- [ ] Linux backend (bubblewrap) with the same policy file
-- [ ] Per-domain egress: filtering proxy design (Seatbelt only toggles network on/off)
-- [ ] Python SDK surface (`agentbox.Sandbox` context manager) beyond the CLI
+- [x] Linux backend (bubblewrap) with the same policy file (2026-10-02; arg-generation tested, needs validation on a real Linux box)
+- [x] Per-domain egress: filtering proxy **design** → [docs/egress-proxy.md](docs/egress-proxy.md) (2026-10-02)
+- [x] Python SDK surface: `agentbox.Sandbox` class; CLI now runs through it (2026-10-02)
+- [ ] Implement the egress proxy (`network = "proxy"` + `allow_net`)
+- [ ] Validate bwrap backend on Linux (CI: GitHub Actions ubuntu runner)
 - [ ] Richer audit events (per-exec, file-event capture options)
 
 ## Backlog (unsorted)

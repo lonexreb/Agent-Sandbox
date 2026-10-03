@@ -2,6 +2,12 @@
 
 Append-only. Newest entries at the top. Format: date — decision — rationale.
 
+## 2026-10-02
+
+- **Backend abstraction landed:** `Sandbox` SDK class picks Seatbelt (macOS) or bubblewrap (Linux) per platform; CLI is now a thin wrapper over the SDK. v0.2.0.
+- **bwrap policy mapping:** reads via `--ro-bind / /`, writes via `--bind` of workdir + allowlist, secrets masked by mounting empty tmpfs over each existing deny_read path, network via `--unshare-net`. Unit-tested on arg generation only — needs a real Linux run (CI task in SPRINT.md).
+- **Egress proxy design accepted** (docs/egress-proxy.md): third network mode `proxy` — sandbox gets no direct network, host-side CONNECT proxy enforces `allow_net` domain list and writes `net.request` audit events. Treats an allowlisted domain as a capability grant (Anthropic's exfiltration lesson).
+
 ## 2026-08-31 (later)
 
 - **Direction decided: A+D.** Policy-as-code + tamper-evident audit control plane, shipped first as a local-first CLI (`agentbox`). Rationale: only open spot on the landscape map (see SCOPE.md gap table); rides existing runtimes instead of competing with them.
