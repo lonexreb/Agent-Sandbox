@@ -19,6 +19,7 @@ def render_args(policy: Policy, workdir: str | Path) -> list[str]:
     args = [
         BWRAP,
         "--die-with-parent",
+        "--unshare-user",  # needed for loopback setup inside --unshare-net
         "--unshare-pid",
         "--unshare-ipc",
         "--unshare-uts",
